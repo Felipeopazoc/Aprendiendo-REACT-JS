@@ -20,7 +20,7 @@ class App extends React.Component{
   unsuscribeFromAuth = null;  
 
 //Tipos ciclos de vida: mount, update,unmount
-/*
+
 componentDidMount(){
       this.unsuscribeFromAuth = auth.onAuthStateChanged(async userAuth =>{
         if(userAuth){
@@ -40,19 +40,19 @@ componentDidMount(){
         this.setState({currentUser:userAuth})
       });
   }
-*/
+
   componentWillUnmount(){
      this.unsuscribeFromAuth();
   }
 
-  render(){
+  render(){//Paso de propiedades -> props
     return (
       <div>
-          <Header/>
+          <Header currentUser={this.state.currentUser}/>
           <Switch>
-              <Route path="/" component={HomePage}/>
-              <Route path="shop" component={ShopPage}/>
-              <Route path="sigin" component={SignInAndSignUpPage}/>
+              <Route exact path="/" component={HomePage}/>
+              <Route path="/shop" component={ShopPage}/>
+              <Route path="/signin" component={SignInAndSignUpPage}/>
           </Switch>
       </div>
     );
